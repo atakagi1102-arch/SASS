@@ -1,0 +1,74 @@
+@use 'variable';
+@use 'mixin';  
+
+.header{
+    @include mixin.size(400px, 100px);
+    box-sizing: border-box;
+    padding: 20px 20px 0 0;
+    background-color: variable.$navy;
+}
+
+.sidebar{
+    @include mixin.size(150px, 250px);
+    background-color: variable.$green;
+}
+
+.main{
+    @include mixin.size(250px, 250px);
+    background-color: variable.$red;
+}
+
+.footer{
+    @include mixin.size(400px, 100px);
+    background-color: variable.$brown ;
+}
+
+.flex_second{
+    display: flex;
+}
+
+.flex_frist{
+    background-color: variable.$white;
+    width: 160px;          
+    height: 60px;          
+    margin-left: auto;   
+    display: flex;
+    justify-content: center;   
+    align-items: center;      
+
+    li{
+    height: 40px;
+    width: 40px;
+    }
+}
+
+.box{
+    display: flex;
+    gap:10px;
+
+}
+
+.main_flex{
+    margin-left: 40px;
+    margin-top: 40px;
+
+    .main_box{
+    box-sizing: border-box;
+    height: 40px;
+    width: 140px;
+    border:5px solid variable.$white;
+    margin-top: 10px;
+    }
+}
+
+$classNames: 'purple', 'orange', 'blue';// クラス名の一覧
+$buttonColor: #a9004b, #ff863f, #0000ff; // 色の一覧
+
+@for $i from 1 through 3 {
+  $name:  nth($classNames, $i);
+  $color: nth($buttonColor, $i);
+
+  .list_#{$name} {
+    background-color: $color;  
+  }
+}
