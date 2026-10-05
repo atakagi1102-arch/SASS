@@ -29,16 +29,14 @@
 
 .flex_frist{
     background-color: variable.$white;
-    width: 160px;          
-    height: 60px;          
+    @include mixin.size(160px, 60px); 
     margin-left: auto;   
     display: flex;
     justify-content: center;   
     align-items: center;      
 
     li{
-    height: 40px;
-    width: 40px;
+    @include mixin.size(40px, 40px);
     }
 }
 
@@ -54,21 +52,16 @@
 
     .main_box{
     box-sizing: border-box;
-    height: 40px;
-    width: 140px;
+    @include mixin.size(140px, 40px);
     border:5px solid variable.$white;
     margin-top: 10px;
     }
 }
 
-$classNames: 'purple', 'orange', 'blue';// クラス名の一覧
-$buttonColor: #a9004b, #ff863f, #0000ff; // 色の一覧
-
-@for $i from 1 through 3 {
-  $name:  nth($classNames, $i);
-  $color: nth($buttonColor, $i);
+@each $name in variable.$classNames {
+  $index_key: index(variable.$classNames, $name); 
 
   .list_#{$name} {
-    background-color: $color;  
+    background-color: nth(variable.$buttonColor, $index_key);
   }
 }
